@@ -165,8 +165,8 @@ export const heroImages = [
   ];
   
   export const contactInfo = {
-    email: 'amrendra-singh@rajafabricators.com',
-    phone: '9913063513',
-    address: 'VrajBhoomi, Vatva'
+    email: 'rajafabricator11@gmail.com',
+    phone: '9328806726, 9712203465',
+    address: '135, Raghuvir Industrial Part-2, Nr. Platinum Estate, Opp. Vatva Railway Station, GIDC Vatva, Ahmedabad-382445'
   };
   
