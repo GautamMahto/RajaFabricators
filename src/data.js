@@ -1,8 +1,9 @@
 export const heroImages = [
-    'main_pic_1.jpg',
-    'main_pic_2.jpg',
-    'main_pic_3.avif',
-    'main_pic_4.webp'
+    'raja_pic_1.jpg',
+    'raja_pic_2.jpg',
+    'raja_pic_3.jpg',
+    'raja_pic_4.jpg',
+    'raja_pic_5.jpg'
   ];
   
   // export const products = [
