@@ -85,5 +85,9 @@ app.post("/send-email", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 const PORT = process.env.PORT_EMAIL || 5000;
+=======
+const PORT = process.env.PORT || 5000;
+>>>>>>> 4965570 (initial commit)
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
