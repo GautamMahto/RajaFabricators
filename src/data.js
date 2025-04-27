@@ -170,4 +170,18 @@ export const heroImages = [
     phone: '9328806726, 9712203465',
     address: '135, Raghuvir Industrial Part-2, Nr. Platinum Estate, Opp. Vatva Railway Station, GIDC Vatva, Ahmedabad-382445'
   };
+
+  export const clientsList = [
+    { name: 'Air_Control', logo: 'Logos/Air control & chemical.jpeg' },
+    { name: 'ACME Air', logo: 'Logos/Acme Air equipments.jpg' },
+    { name: 'Prashant', logo: 'Logos/Prashant logo.png' },
+    { name: 'ivc', logo: 'Logos/ivc pumps.jpg' },
+    { name: 'macro', logo: 'Logos/macro_black.png' },
+    { name: 'shree', logo: 'Logos/Shree ambica engineering.png' },
+    { name: 'goair', logo: 'Logos/Go air Engineering.png' },
+    { name: 'limboj', logo: 'logos/limboj.png'}
+
+
+    // Add more as needed
+  ];
   

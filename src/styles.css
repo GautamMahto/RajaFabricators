@@ -813,3 +813,50 @@ body.dark-mode .product-card ul li::before {
 .contact, .contact-container {
   text-align: left;
 }
+
+
+
+
+/* Clients Section */
+/* .clients {
+  padding: 60px 0;
+}
+.clients h2 {
+  text-align: center;
+  font-family: 'Georgia', serif;
+  margin-bottom: 40px;
+}
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+.client-logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+} */
+
+/* Clients Section */
+.clients {
+  padding: 60px 0;
+}
+.clients h2 {
+  text-align: center;
+  font-family: 'Georgia', serif;
+  margin-bottom: 40px;
+}
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+.client-logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

@@ -433,7 +433,7 @@
 import React from 'react';
 
 const Navbar = ({ isDarkMode, setIsDarkMode, activeSection }) => {
-  const sections = ['home', 'about', 'products', 'contact', 'inquiry'];
+  const sections = ['home', 'about', 'products','clients', 'contact', 'inquiry'];
 
   return (
     <nav className={`navbar ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
