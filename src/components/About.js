@@ -42,13 +42,11 @@ const About = ({ isDarkMode }) => {
       <a href="#products">Explore Our Products</a>
     </div>
     <div className="about-image">
-      <img src="about.jpeg" alt="About Us" />
+      <img src="circle_cropped_image.png" alt="About Us" />
     </div>
   </div>
 </section>
 
 );
 };
-
-
 export default About;
