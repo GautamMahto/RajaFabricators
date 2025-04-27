@@ -179,7 +179,7 @@ export const heroImages = [
     { name: 'macro', logo: 'Logos/macro_black.png' },
     { name: 'shree', logo: 'Logos/Shree ambica engineering.png' },
     { name: 'goair', logo: 'Logos/Go air Engineering.png' },
-    { name: 'limboj', logo: 'logos/limboj.png'}
+    { name: 'limboj', logo: 'Logos/limboj.png'}
 
 
     // Add more as needed
