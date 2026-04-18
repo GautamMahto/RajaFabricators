@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raja Fabricators – Custom Machine Manufacturing & Fabrication</title>
+  <meta name="description" content="Raja Fabricators specialises in custom machine manufacturing, metal fabrication, and industrial equipment including AHUs, blowers, screw conveyors and more, based in Ahmedabad, Gujarat." />
+  <link rel="icon" href="data/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background: #F9FAFB;
+      color: #1F2937;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+    body.dark {
+      background: #111827;
+      color: #F3F4F6;
+    }
+
+    /* =============================================
+       CSS VARIABLES
+    ============================================= */
+    :root {
+      --red: #E3342F;
+      --red-dark: #C53030;
+      --red-glow: rgba(227, 52, 47, 0.25);
+      --nav-h: 72px;
+    }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 56px;
+      height: 4px;
+      background: var(--red);
+      border-radius: 4px;
+      margin: 12px auto 0;
+    }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    body.dark #navbar {
+      background: rgba(17,24,39,0.92);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.4);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      color: #4B5563;
+      transition: color 0.2s, background 0.2s;
+    }
+    body.dark .nav-links a { color: #D1D5DB; }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--red);
+      background: var(--red-glow);
+    }
+
+    /* Theme toggle */
+    #theme-btn {
+      background: none;
+      border: 2px solid #E5E7EB;
+      border-radius: 50%;
+      width: 38px; height: 38px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    body.dark #theme-btn { border-color: #374151; }
+    #theme-btn:hover { border-color: var(--red); background: var(--red-glow); }
+
+    /* Hamburger */
+    #hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    #hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #4B5563;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    body.dark #hamburger span { background: #D1D5DB; }
+
+    /* Mobile nav drawer */
+    #mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; width: 100%;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      z-index: 999;
+      padding: 20px 24px 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      animation: slideIn 0.25s ease;
+    }
+    body.dark #mobile-nav { background: rgba(17,24,39,0.97); }
+    #mobile-nav.open { display: block; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #mobile-nav a {
+      display: block;
+      padding: 12px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1F2937;
+      text-decoration: none;
+      border-bottom: 1px solid #F3F4F6;
+    }
+    body.dark #mobile-nav a { color: #F3F4F6; border-bottom-color: #374151; }
+    #mobile-nav a:last-child { border-bottom: none; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      #hamburger { display: flex; }
+    }
+
+    /* =============================================
+       HERO SLIDESHOW
+    ============================================= */
+    #home {
+      position: relative;
+      height: 90vh;
+      min-height: 500px;
+      overflow: hidden;
+      margin-top: var(--nav-h);
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.3) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      color: #fff;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease 0.2s both;
+    }
+
+    .hero-overlay h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      animation: fadeInDown 0.8s ease 0.4s both;
+    }
+
+    .hero-overlay p {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      max-width: 600px;
+      opacity: 0.9;
+      margin-bottom: 36px;
+      animation: fadeInDown 0.8s ease 0.6s both;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 100px;
+      box-shadow: 0 4px 20px var(--red-glow);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      animation: fadeInDown 0.8s ease 0.8s both;
+    }
+    .hero-cta:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 28px var(--red-glow); }
+
+    /* Slide indicators */
+    .hero-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .hero-dot.active { background: #fff; transform: scale(1.4); }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =============================================
+       ABOUT
+    ============================================= */
+    #about {
+      padding: 96px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 820px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-wrap { order: -1; }
+    }
+
+    .about-text h2 { margin-bottom: 32px; text-align: left; }
+    .about-text h2::after { margin: 12px 0 0; }
+
+    .about-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .about-icon {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      background: var(--red-glow);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+    }
+    .about-item-text strong { display: block; margin-bottom: 4px; font-weight: 600; }
+    .about-item-text p { font-size: 0.92rem; color: #6B7280; }
+    body.dark .about-item-text p { color: #9CA3AF; }
+
+    .about-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: gap 0.2s;
+    }
+    .about-link:hover { gap: 10px; }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      border: 3px solid var(--red);
+      border-radius: 16px;
+      opacity: 0.25;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    /* =============================================
+       PRODUCTS
+    ============================================= */
+    #products {
+      padding: 96px 0;
+      background: #F3F4F6;
+      transition: background 0.35s ease;
+    }
+    body.dark #products { background: #1F2937; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    body.dark .product-card { background: #1a2433; }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .card-body {
+      padding: 20px 20px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: inherit;
+    }
+
+    .card-features {
+      list-style: none;
+      flex: 1;
+    }
+    .card-features li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.87rem;
+      color: #6B7280;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    body.dark .card-features li { color: #9CA3AF; }
+    .card-features li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-size: 0.85rem;
+    }
+
+    /* =============================================
+       CLIENTS
+    ============================================= */
+    #clients {
+      padding: 80px 0;
+      overflow: hidden;
+    }
+
+    .clients-track-outer {
+      overflow: hidden;
+      position: relative;
+    }
+    .clients-track-outer::before,
+    .clients-track-outer::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+    .clients-track-outer::before {
+      left: 0;
+      background: linear-gradient(to right, #F9FAFB, transparent);
+    }
+    .clients-track-outer::after {
+      right: 0;
+      background: linear-gradient(to left, #F9FAFB, transparent);
+    }
+    body.dark .clients-track-outer::before { background: linear-gradient(to right, #111827, transparent); }
+    body.dark .clients-track-outer::after  { background: linear-gradient(to left, #111827, transparent); }
+
+    .clients-track {
+      display: flex;
+      width: max-content;
+      animation: scrollClients 22s linear infinite;
+      gap: 48px;
+      padding: 12px 0;
+    }
+    .clients-track:hover { animation-play-state: paused; }
+
+    .client-item {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 72px;
+      padding: 8px 12px;
+    }
+    .client-item img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.65;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+    .client-item img:hover { filter: grayscale(0); opacity: 1; }
+
+    @keyframes scrollClients {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    #contact {
+      padding: 0 0 80px;
+      background: #F3F4F6;
+      transition: background 0.35s ease;
+    }
+    body.dark #contact { background: #1F2937; }
+
+    .contact-heading { padding-top: 80px; }
+
+    .contact-flex {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 820px) {
+      .contact-flex { grid-template-columns: 1fr; }
+    }
+
+    .contact-map { height: 380px; }
+    .contact-map iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    .contact-info {
+      background: #fff;
+      padding: 40px 40px 40px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 28px;
+    }
+    body.dark .contact-info { background: #1a2433; }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: var(--red-glow);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.05rem;
+    }
+    .contact-detail-text strong { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #9CA3AF; margin-bottom: 4px; }
+    .contact-detail-text span { font-size: 0.95rem; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: #111827;
+      color: #9CA3AF;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--red); text-decoration: none; }
+
+    /* =============================================
+       SCROLL TO TOP
+    ============================================= */
+    #scroll-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 900;
+      width: 46px; height: 46px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px var(--red-glow);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s, background 0.3s;
+      pointer-events: none;
+    }
+    #scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    #scroll-top:hover { background: var(--red-dark); }
+
+    /* =============================================
+       REVEAL ANIMATIONS
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="light">
+
+  <!-- =============================================
+       NAVBAR
+  ============================================= -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">RAJA FABRICATORS</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home"     id="nl-home">Home</a></li>
+        <li><a href="#about"    id="nl-about">About</a></li>
+        <li><a href="#products" id="nl-products">Products</a></li>
+        <li><a href="#clients"  id="nl-clients">Clients</a></li>
+        <li><a href="#contact"  id="nl-contact">Contact</a></li>
+      </ul>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <button id="theme-btn" aria-label="Toggle dark mode">🌙</button>
+        <button id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" aria-hidden="true">
+    <a href="#home"     onclick="closeMobile()">Home</a>
+    <a href="#about"    onclick="closeMobile()">About</a>
+    <a href="#products" onclick="closeMobile()">Products</a>
+    <a href="#clients"  onclick="closeMobile()">Clients</a>
+    <a href="#contact"  onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <section id="home" aria-label="Hero">
+
+    <div class="hero-slide active" style="background-image:url('data/raja_pic_1.jpg')"></div>
+    <div class="hero-slide"        style="background-image:url('data/raja_pic_2.jpg')"></div>
+    <div class="hero-slide"        style="background-image:url('data/raja_pic_3.jpg')"></div>
+    <div class="hero-slide"        style="background-image:url('data/raja_pic_4.jpg')"></div>
+    <div class="hero-slide"        style="background-image:url('data/raja_pic_5.jpg')"></div>
+
+    <div class="hero-overlay">
+      <span class="hero-badge">Est. in Ahmedabad, Gujarat</span>
+      <h1>Precision Engineering<br>Built to Last</h1>
+      <p>Custom machine manufacturing &amp; metal fabrication — from concept to completion, tailored for industry.</p>
+      <a href="#products" class="hero-cta">Explore Our Products ›</a>
+    </div>
+
+    <div class="hero-dots" aria-label="Slideshow navigation">
+      <button class="hero-dot active" data-idx="0" aria-label="Slide 1"></button>
+      <button class="hero-dot"        data-idx="1" aria-label="Slide 2"></button>
+      <button class="hero-dot"        data-idx="2" aria-label="Slide 3"></button>
+      <button class="hero-dot"        data-idx="3" aria-label="Slide 4"></button>
+      <button class="hero-dot"        data-idx="4" aria-label="Slide 5"></button>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ABOUT
+  ============================================= -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Text -->
+        <div class="about-text reveal">
+          <h2 class="section-title">About Us</h2>
+
+          <div class="about-item">
+            <div class="about-icon">⚙️</div>
+            <div class="about-item-text">
+              <strong>Custom Machine Manufacturing &amp; Fabrication</strong>
+              <p>We build machines and fabricate metal structures tailored to client specifications across diverse industries.</p>
+            </div>
+          </div>
+
+          <div class="about-item">
+            <div class="about-icon">🔧</div>
+            <div class="about-item-text">
+              <strong>Comprehensive Engineering Services</strong>
+              <p>Steel fabrication, welding, machining, and design of complex mechanical systems under one roof.</p>
+            </div>
+          </div>
+
+          <div class="about-item">
+            <div class="about-icon">👷</div>
+            <div class="about-item-text">
+              <strong>Skilled Engineering Team</strong>
+              <p>Experienced engineers and fabricators ensuring innovative, precise solutions every time.</p>
+            </div>
+          </div>
+
+          <div class="about-item">
+            <div class="about-icon">🏆</div>
+            <div class="about-item-text">
+              <strong>Client-Centric Solutions</strong>
+              <p>Reliable, cost-effective, high-quality products delivered from concept to completion.</p>
+            </div>
+          </div>
+
+          <a href="#products" class="about-link">Explore Our Products →</a>
+        </div>
+
+        <!-- Image -->
+        <div class="about-img-wrap reveal">
+          <img src="data/circle_cropped_image.png" alt="Raja Fabricators workshop" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PRODUCTS
+  ============================================= -->
+  <section id="products">
+    <div class="container">
+      <h2 class="section-title reveal">Our Products</h2>
+      <div class="product-grid" id="product-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CLIENTS
+  ============================================= -->
+  <section id="clients">
+    <div class="container">
+      <h2 class="section-title reveal">Our Clients</h2>
+    </div>
+    <div class="clients-track-outer">
+      <div class="clients-track" id="clients-track">
+        <!-- Items injected by JS (doubled for seamless loop) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONTACT
+  ============================================= -->
+  <section id="contact">
+    <div class="container contact-heading">
+      <h2 class="section-title reveal">Contact Us</h2>
+    </div>
+    <div class="container">
+      <div class="contact-flex reveal">
+        <!-- Map -->
+        <div class="contact-map">
+          <iframe
+            title="Raja Fabricators location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.756124206287!2d72.62506067513856!3d22.95920697921827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e88b9f9cd615d%3A0x6cd7f2b97a19b13!2sRaghuveer%20Industrial%20Park%2C%202%2C%20Dibiyapur%2C%20Vatva%20GIDC%2C%20Ahmedabad%2C%20Gujarat%20382445!5e0!3m2!1sen!2sin!4v1742736821420!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📧</div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              <span><a href="mailto:rajafabricator11@gmail.com">rajafabricator11@gmail.com</a></span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📞</div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <span>
+                <a href="tel:+919328806726">+91 93288 06726</a> &nbsp;|&nbsp;
+                <a href="tel:+919712203465">+91 97122 03465</a>
+              </span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <strong>Address</strong>
+              <span>135, Raghuvir Industrial Park–2, Nr. Platinum Estate, Opp. Vatva Railway Station, GIDC Vatva, Ahmedabad – 382445</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer>
+    <p>© 2025 <strong style="color:#fff;">Raja Fabricators</strong>. All rights reserved. &nbsp;·&nbsp; Ahmedabad, Gujarat &nbsp;·&nbsp; <a href="mailto:rajafabricator11@gmail.com">rajafabricator11@gmail.com</a></p>
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button id="scroll-top" aria-label="Scroll to top">↑</button>
+
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    /* -------- DATA -------- */
+    const products = [
+      {
+        title: 'Air Handling Unit (A.H.U)',
+        image: 'data/AHU.png',
+        features: ['Precise airflow capacity', 'Designed for static pressure balance', 'Energy efficient motor & fan technology', 'Customization options available']
+      },
+      {
+        title: 'Industrial Blower',
+        image: 'data/Industrial_Blower.png',
+        features: ['Optimized airflow capacity', 'Engineered to overcome system resistance', 'Robust motor power options', 'Centrifugal & positive displacement available']
+      },
+      {
+        title: 'Screw Conveyor',
+        image: 'data/screw_conver_1.jpg',
+        features: ['Precise transport capacity', 'Durable gearbox design', 'Adjustable speed control', 'Custom configurations available']
+      },
+      {
+        title: 'Tray Dryer',
+        image: 'data/Tray_dyrer.png',
+        features: ['Efficient drying capacity', 'Accurate temperature control', 'Energy efficient performance', 'Customizable features']
+      },
+      {
+        title: 'Temperature Minimizing Fan',
+        image: 'data/Temp_minizing_fan.jpg',
+        features: ['Effective cooling capacity', 'Adjustable speed settings', 'Energy efficient design', 'Tailored designs available']
+      },
+      {
+        title: 'SS Solution Tank',
+        image: 'data/ss_solution_tank.jpg',
+        features: ['Multiple capacity options', 'Durable construction', 'Customizable agitation & mixing', 'Configurable features']
+      },
+      {
+        title: 'Electrical Panel Box',
+        image: 'data/electrical_panel_box_1.png',
+        features: ['Various size & capacity options', 'Durable construction for harsh environments', 'Custom configurations available', 'Advanced safety features']
+      },
+      {
+        title: 'Root Blower',
+        image: 'data/root_blower_1.png',
+        features: ['High airflow capacity', 'Robust and durable design', 'Oil-free operation', 'Energy efficient performance']
+      },
+      {
+        title: 'Non-Return Valve',
+        image: 'data/nrv.png',
+        features: ['Cast iron durability', 'Prevents backflow effectively', 'Low maintenance', 'High-temperature resistance']
+      },
+      {
+        title: 'Dry Bag Suction Filter',
+        image: 'data/dry_bag_suction.png',
+        features: ['Efficient dust & particle collection', 'Durable construction', 'Easy maintenance', 'Customizable options']
+      },
+    ];
+
+    const clients = [
+      { name: 'Air Control & Chemical', logo: 'data/Logos/Air control & chemical.jpeg' },
+      { name: 'ACME Air',               logo: 'data/Logos/Acme Air equipments.jpg' },
+      { name: 'Prashant',               logo: 'data/Logos/Prashant logo.png' },
+      { name: 'IVC Pumps',              logo: 'data/Logos/ivc pumps.jpg' },
+      { name: 'Macro',                  logo: 'data/Logos/macro_black.png' },
+      { name: 'Shree Ambica',           logo: 'data/Logos/Shree ambica engineering.png' },
+      { name: 'Go Air Engineering',     logo: 'data/Logos/Go air Engineering.png' },
+      { name: 'Limboj',                 logo: 'data/Logos/limboj.png' },
+    ];
+
+    /* -------- RENDER PRODUCTS -------- */
+    const grid = document.getElementById('product-grid');
+    products.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'product-card reveal';
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.title}" loading="lazy" />
+        <div class="card-body">
+          <h3>${p.title}</h3>
+          <ul class="card-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    /* -------- RENDER CLIENTS (doubled for seamless loop) -------- */
+    const track = document.getElementById('clients-track');
+    const doubled = [...clients, ...clients];
+    doubled.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'client-item';
+      el.innerHTML = `<img src="${c.logo}" alt="${c.name}" loading="lazy" />`;
+      track.appendChild(el);
+    });
+
+    /* -------- HERO SLIDESHOW -------- */
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    let current  = 0;
+    let autoTimer;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function nextSlide() {
+      goTo((current + 1) % slides.length);
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(nextSlide, 4500);
+    }
+    startAuto();
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        clearInterval(autoTimer);
+        goTo(parseInt(dot.dataset.idx));
+        startAuto();
+      });
+    });
+
+    /* -------- DARK / LIGHT MODE -------- */
+    const themeBtn = document.getElementById('theme-btn');
+    let isDark = false;
+
+    function applyTheme() {
+      document.body.classList.toggle('dark', isDark);
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      localStorage.setItem('rfTheme', isDark ? 'dark' : 'light');
+    }
+
+    // Restore saved preference
+    if (localStorage.getItem('rfTheme') === 'dark') { isDark = true; applyTheme(); }
+
+    themeBtn.addEventListener('click', () => { isDark = !isDark; applyTheme(); });
+
+    /* -------- MOBILE MENU -------- */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+      mobileNav.setAttribute('aria-hidden', !open);
+    });
+
+    function closeMobile() {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+    }
+
+    /* -------- ACTIVE NAV LINK -------- */
+    const sections  = ['home','about','products','clients','contact'];
+    const navLinks  = {};
+    sections.forEach(s => { navLinks[s] = document.getElementById(`nl-${s}`); });
+
+    function updateNav() {
+      const scrollY = window.scrollY + 120;
+      sections.slice().reverse().forEach(s => {
+        const el = document.getElementById(s);
+        if (el && scrollY >= el.offsetTop) {
+          Object.values(navLinks).forEach(a => a && a.classList.remove('active'));
+          navLinks[s] && navLinks[s].classList.add('active');
+        }
+      });
+    }
+
+    /* -------- SCROLL TO TOP -------- */
+    const scrollTopBtn = document.getElementById('scroll-top');
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* -------- REVEAL ON SCROLL -------- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* -------- SCROLL EVENT -------- */
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+      updateNav();
+    }, { passive: true });
+
+    updateNav();
+  </script>
+</body>
+</html>
